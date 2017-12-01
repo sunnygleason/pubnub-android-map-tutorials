@@ -24,7 +24,7 @@ public class LocationSubscribePnCallback extends SubscribeCallback {
 
     @Override
     public void status(PubNub pubnub, PNStatus status) {
-        Log.d(TAG + "/PN_STATUS", "status: " + status.toString());
+        Log.d(TAG, "status: " + status.toString());
     }
 
     @Override
@@ -34,7 +34,7 @@ public class LocationSubscribePnCallback extends SubscribeCallback {
         }
 
         try {
-            Log.d(TAG + "/PN_MESSAGE", "message: " + message.toString());
+            Log.d(TAG, "message: " + message.toString());
 
             Map<String, String> newLocation = JsonUtil.fromJson(message.getMessage().toString(), LinkedHashMap.class);
             locationMapAdapter.locationUpdated(newLocation);
@@ -45,6 +45,10 @@ public class LocationSubscribePnCallback extends SubscribeCallback {
 
     @Override
     public void presence(PubNub pubnub, PNPresenceEventResult presence) {
-        Log.d(TAG + "/PN_PRESENCE", "presence: " + presence.toString());
+        if (!presence.getChannel().equals(watchChannel)) {
+            return;
+        }
+
+        Log.d(TAG, "presence: " + presence.toString());
     }
 }

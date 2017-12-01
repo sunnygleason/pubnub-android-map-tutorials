@@ -96,7 +96,7 @@ public class FlightPathsTabContentFragment extends Fragment implements OnMapRead
                                             if (!status.isError()) {
                                                 Log.v(TAG, "publish(" + JsonUtil.asJson(result) + ")");
                                             } else {
-                                                Log.v(TAG, "publishErr(" + JsonUtil.asJson(status) + ")");
+                                                Log.v(TAG, "publishErr(" + status.toString() + ")");
                                             }
                                         } catch (Exception e) {
                                             e.printStackTrace();
