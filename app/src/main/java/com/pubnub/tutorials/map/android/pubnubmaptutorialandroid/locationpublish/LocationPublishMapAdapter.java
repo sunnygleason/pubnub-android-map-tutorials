@@ -32,7 +32,6 @@ public class LocationPublishMapAdapter {
         } else {
             Log.w(TAG, "message ignored: " + newLocation.toString());
         }
-
     }
 
     private void doUiUpdate(final LatLng location) {
@@ -46,7 +45,6 @@ public class LocationPublishMapAdapter {
                 }
 
                 map.moveCamera(CameraUpdateFactory.newLatLng(location));
-
             }
         });
     }

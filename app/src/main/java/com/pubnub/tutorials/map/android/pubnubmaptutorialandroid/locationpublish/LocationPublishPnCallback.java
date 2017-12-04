@@ -15,10 +15,10 @@ import java.util.Map;
 
 public class LocationPublishPnCallback extends SubscribeCallback {
     private static final String TAG = LocationPublishPnCallback.class.getName();
-    private LocationSubscribeMapAdapter locationMapAdapter;
+    private LocationPublishMapAdapter locationMapAdapter;
     private String watchChannel;
 
-    public LocationPublishPnCallback(LocationSubscribeMapAdapter locationMapAdapter, String watchChannel) {
+    public LocationPublishPnCallback(LocationPublishMapAdapter locationMapAdapter, String watchChannel) {
         this.locationMapAdapter = locationMapAdapter;
         this.watchChannel = watchChannel;
     }

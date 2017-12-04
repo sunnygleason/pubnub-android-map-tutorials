@@ -60,7 +60,7 @@ public class LocationPublishTabContentFragment extends Fragment implements OnMap
     public void onMapReady(GoogleMap map) {
         this.map = map;
 
-        this.pubNub.addListener(new LocationSubscribePnCallback(new LocationSubscribeMapAdapter((Activity) this.getContext(), map), Constants.PUBLISH_CHANNEL_NAME));
+        this.pubNub.addListener(new LocationPublishPnCallback(new LocationPublishMapAdapter((Activity) this.getContext(), map), Constants.PUBLISH_CHANNEL_NAME));
         this.pubNub.subscribe().channels(Arrays.asList(Constants.PUBLISH_CHANNEL_NAME)).execute();
 
         this.locationHelper = new LocationHelper((Activity) this.getContext(), this);
@@ -78,7 +78,7 @@ public class LocationPublishTabContentFragment extends Fragment implements OnMap
                             if (!status.isError()) {
                                 Log.v(TAG, "publish(" + JsonUtil.asJson(result) + ")");
                             } else {
-                                Log.v(TAG, "publishErr(" + JsonUtil.asJson(status) + ")");
+                                Log.v(TAG, "publishErr(" + status.toString() + ")");
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
